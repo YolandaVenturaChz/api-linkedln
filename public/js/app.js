@@ -1,8 +1,13 @@
-<script type="text/javascript" src="//platform.linkedin.com/in.js">
-    api_key:   [API_KEY]
-    onLoad:    [ONLOAD]
-    authorize: [AUTHORIZE]
-    lang:      [LANG_LOCALE]
-</script>
-
-alert ('¡Sí funciono! :)');
+$(document).ready(function () {
+    
+  function onLinkedInLoad() {
+    IN.Event.on(IN, "auth", getProfileData);
+    console.log();
+  }
+  
+      
+    var err = error(function (data) {
+      console.log(data);
+    })
+   
+});
