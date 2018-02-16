@@ -1,0 +1,33 @@
+.row {
+    
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    
+}
+
+.login {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.container {
+  background: linear-gradient( yellow, orange,lightgreen);
+}
+#btn {
+  width: 100%;
+  background: lightseagreen;
+}
+p {
+  margin: 0 0 10px;
+  font-size: 30px;
+  color: black;
+}
+a{
+  font-size: 20px;
+}

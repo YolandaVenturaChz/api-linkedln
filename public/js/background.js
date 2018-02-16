@@ -17,7 +17,7 @@ $(document).ready(function () {
         }
       }; 
   
-      imagenes.open('GET', `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e2c37b656ec7eaa2fb179227fc88b553&tags=word&per_page=3&format=json&nojsoncallback=1`);
+      imagenes.open('GET', `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e2c37b656ec7eaa2fb179227fc88b553&tags=people&per_page=3&format=json&nojsoncallback=1`);
       imagenes.send();
     }
     imagenes();
