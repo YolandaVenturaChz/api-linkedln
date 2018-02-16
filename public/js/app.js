@@ -1,38 +1,22 @@
-// Setup an event listener to make an API call once auth is complete
-function onLinkedInLoad() {
-  IN.Event.on(IN, "auth", shareContent);
-}
+$(document).ready(function () {
 
-// Handle the successful return from the API call
-function onSuccess(data) {
-  var data = data
-  console.log(data);
-  var updateKey = data.updateKey
-  console.log(updateKey);
-  var updateUrl = data.updateUrl
-  console.log(updateUrl);
-  
-}
+  IN.Event.on(IN, `auth`, getProfileData);
 
-// Handle an error response from the API call
-function onError(error) {
-  console.log(error);
-}
+  function onSuccess(data) {
+    console.log(data);
+    let profileName = `${data.firstName} ${data.lastName}`;
+    let title = data.headline;
+    let url = data.siteStandardProfileRequest.url;
+    window.localStorage.setItem(`user-name`,profileName);
+    window.localStorage.setItem(`headline`, title);
+    window.localStorage.setItem(`url`, url);
+    window.location.href = `view/home.html`;
+  }
 
-// Use the API call wrapper to share content on LinkedIn
-function shareContent() {
-
-  // Build the JSON payload containing the content to be shared
-  var payload = {
-    "comment": "Check out developer.linkedin.com! http://linkd.in/1FC2PyG",
-    "visibility": {
-      "code": "anyone"
-    }
-  };
-
-  IN.API.Raw("/people/~/shares?format=json")
-    .method("POST")
-    .body(JSON.stringify(payload))
-    .result(onSuccess)
-    .error(onError);
-}
+  function onError(error) {
+    alert(error);
+  }
+  function getProfileData() {
+    IN.API.Raw(`/people/~`).result(onSuccess).error(onError);
+  }
+});
